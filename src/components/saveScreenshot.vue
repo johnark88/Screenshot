@@ -1,23 +1,23 @@
 <template>
-  <div class="screenshot">
+  <div class="save-screenshot">
     <button
-    @click="takeShot"
+    @click="saveShot"
     class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
-    Take ScreenShot</button>
+    Save ScreenShot</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'screenshot',
+  name: 'save-screenshot',
   data() {
     return {
       thing: null,
     };
   },
   methods: {
-    takeShot() {
-      console.log('hello');
+    saveShot() {
+      console.log('saved');
     },
   },
 };

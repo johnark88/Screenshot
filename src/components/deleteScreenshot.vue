@@ -1,23 +1,23 @@
 <template>
-  <div class="screenshot">
+  <div class="delete-screenshot">
     <button
-    @click="takeShot"
+    @click="deleteShot"
     class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
-    Take ScreenShot</button>
+    Delete ScreenShot</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'screenshot',
+  name: 'delete-screenshot',
   data() {
     return {
       thing: null,
     };
   },
   methods: {
-    takeShot() {
-      console.log('hello');
+    deleteShot() {
+      console.log('discarded, deleted, buh by!');
     },
   },
 };
