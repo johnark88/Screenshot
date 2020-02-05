@@ -1,6 +1,14 @@
 <template>
   <div class="screenshot">
     <h1>Screenshot</h1>
+    <div class="header-container p-8">
+      <div class="header-container__row flex flex-row justify-center">
+        <div class="row-item p-4"><p>Take Screensnot</p></div>
+        <div class="row-item p-4"><p>Save Screenshot</p></div>
+        <div class="row-item p-4"><p>Compare Screenshot</p></div>
+        <div class="row-item p-4"><p>Discard Screenshot</p></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,18 +23,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

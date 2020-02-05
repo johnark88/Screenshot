@@ -1,5 +1,5 @@
 <template>
-  <div class="About">
+  <div class="About w-9/10 mx-auto">
     <screenshot />
   </div>
 </template>
