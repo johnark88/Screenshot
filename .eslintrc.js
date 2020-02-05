@@ -11,10 +11,10 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'max-len': ['warn', { code: 100 }],
-    'eqeqeq': ["warn", "smart"],
-    'no-empty-function': "error",
-    'no-multi-spaces': "error",
-    'no-param-reassign': "error"
+    eqeqeq: ['warn', 'smart'],
+    'no-empty-function': 'error',
+    'no-multi-spaces': 'error',
+    'no-param-reassign': 'error',
   },
   parserOptions: {
     parser: 'babel-eslint',
