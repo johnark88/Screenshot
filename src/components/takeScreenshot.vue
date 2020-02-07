@@ -1,19 +1,23 @@
 <template>
-  <div class="screenshot">
+  <div class="take-screenshot">
     <button
     @click="takeShot"
     class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
     Take ScreenShot</button>
+    {{image}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'screenshot',
+  name: 'take-screenshot',
+  props: {
+    image: {
+      type: String,
+    },
+  },
   data() {
-    return {
-      thing: null,
-    };
+    return {};
   },
   methods: {
     takeShot() {
