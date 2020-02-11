@@ -14,7 +14,6 @@ export default new Vuex.Store({
     addImageData(state, payload) {
       state.imgData.src = payload.src;
       state.imgData.name = payload.name;
-      console.log(state.imgData, 'imgData');
     },
   },
   actions: {
