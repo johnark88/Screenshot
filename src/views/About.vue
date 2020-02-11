@@ -5,7 +5,7 @@
       <div class="header-container__row flex flex-row justify-center">
         <div class="row-item p-4"><p><takeScreenshot v-bind:image="image" /></p></div>
         <div class="row-item p-4"><p><saveScreenshot /></p></div>
-        <div class="row-item p-4"><p>Compare Screenshot</p></div>
+        <div class="row-item p-4"><p><compareScreenshot /></p></div>
         <div class="row-item p-4"><p><deleteScreenshot /></p></div>
       </div>
     </div>
@@ -17,6 +17,7 @@
 // @ is an alias to /src
 import takeScreenshot from '@/components/takeScreenshot.vue';
 import saveScreenshot from '@/components/saveScreenshot.vue';
+import compareScreenshot from '@/components/compareScreenshot.vue';
 import deleteScreenshot from '@/components/deleteScreenshot.vue';
 
 export default {
@@ -25,6 +26,7 @@ export default {
     takeScreenshot,
     saveScreenshot,
     deleteScreenshot,
+    compareScreenshot,
   },
   data() {
     return {
