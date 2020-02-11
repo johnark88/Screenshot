@@ -22,6 +22,7 @@ export default {
   methods: {
     takeShot() {
       console.log('hello');
+      this.$store.commit('addImageData', { name: 'website-date', src: 'google.com' });
     },
   },
 };
