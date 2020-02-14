@@ -15,6 +15,7 @@ module.exports = {
     'no-empty-function': 'error',
     'no-multi-spaces': 'error',
     'no-param-reassign': 'error',
+    'arrow-body-style': ['error', 'as-needed'],
   },
   parserOptions: {
     parser: 'babel-eslint',

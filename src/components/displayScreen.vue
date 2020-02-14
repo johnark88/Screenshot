@@ -1,6 +1,8 @@
 <template>
   <div class="display-screen">
-    <img src="" alt="">
+    <!-- <img src="{{imageURL}}" alt=""> -->
+    <button> here</button>
+    {{screenShots}}
   </div>
 </template>
 
@@ -10,7 +12,22 @@ export default {
   data() {
     return {
       thing: null,
+      // imageURL: '',
+      successfulShots: [],
     };
+  },
+  watch: {
+    screenShots(newVal, oldVal) {
+      if (newVal === null || newVal === undefined) {
+        console.log('no', oldVal);
+      }
+      console.log('yes', newVal);
+    },
+  },
+  computed: {
+    screenShots() {
+      return this.$store.getters.successfulShot;
+    },
   },
 };
 </script>

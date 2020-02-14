@@ -4,7 +4,8 @@
     @click="takeShot"
     class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
     Take ScreenShot</button>
-    {{image}}
+    <br>
+    <div v-if="errorMsg"><h3>{{errorMsg}}</h3></div>
   </div>
 </template>
 
@@ -18,7 +19,14 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      screenshot: {
+        success: false,
+        file: '',
+        name: '',
+      },
+      errorMsg: '',
+    };
   },
   methods: {
     // send data to server to take screenshot
@@ -34,9 +42,18 @@ export default {
       // Use axios to send POST, url, header = json, data = payLoad
       this.$apiService.post('/api/screenshot', payLoad)
         // the Server Response
-        // response - data: {success: true, file: 'file url', name: 'name', fileName:'Github_01.01.2020'}
+        // response-
+        // data: {success: true, file: 'file url', name: 'name', fileName:'Github_01.01.2020'}
         .then((response) => {
           console.log(response);
+          if (!response.data.success === true) {
+            this.errorMsg = 'ScreenShot Error, please try again later';
+          }
+
+          this.screenshot.status = response.data.success;
+          this.screenshot.file = response.data.file;
+          this.screenshot.name = response.data.fileName;
+          this.storeScreenShot(this.screenshot);
         })
         // catch that error
         .catch((error) => {
@@ -45,9 +62,9 @@ export default {
     },
 
     // commit the response from the POST call above to Vuex store
-    storeScreenShot() {
+    storeScreenShot(screenshot) {
       console.log('store shot');
-      // this.$store.commit('addImageData', { name: 'website-date', src: 'google.com' });
+      this.$store.commit('addImageData', screenshot);
     },
   },
 };
