@@ -30,14 +30,9 @@ export default {
         siteURL: 'https://github.com',
         name: 'Github',
       };
-
+      this.$apiService.setHeader();
       // Use axios to send POST, url, header = json, data = payLoad
-      this.axios({
-        method: 'POST',
-        url: 'https://3d8ccc39.ngrok.io/api/screenshot',
-        headers: { 'Content-Type': 'application/json' },
-        data: { payLoad },
-      })
+      this.$apiService.post('/api/screenshot', payLoad)
         // the Server Response
         // response - data: {success: true, file: 'file url', name: 'name', fileName:'Github_01.01.2020'}
         .then((response) => {
