@@ -1,29 +1,41 @@
 <template>
   <div class="take-screenshot">
-    <button
-    @click="takeShot"
-    class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
-    Take ScreenShot</button>
+    <div class="button-container">
+       <button
+      @click="takeShot"
+      class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">
+      Take ScreenShot</button>
+    </div>
     <br>
-    <div v-if="errorMsg"><h3>{{errorMsg}}</h3></div>
+    <div class="error-container">
+      <div v-if="errorMsg"><h3>{{errorMsg}}</h3></div>
+    </div>
+
+    <displayScreen v-bind:screenshot="screenshot" />
   </div>
 </template>
 
 <script>
+import displayScreen from '@/components/displayScreen.vue';
+
 export default {
   name: 'take-screenshot',
-  props: {
-    image: {
-      type: String,
-      image: '',
-    },
+  components: {
+    displayScreen,
   },
+  // props: {
+  //   image: {
+  //     type: String,
+  //     image: '',
+  //   },
+  // },
   data() {
     return {
       screenshot: {
-        success: false,
-        file: '',
-        name: '',
+        success: '',
+        fileURL: '',
+        siteName: '',
+        fileName: '',
       },
       errorMsg: '',
     };
@@ -42,18 +54,22 @@ export default {
       // Use axios to send POST, url, header = json, data = payLoad
       this.$apiService.post('/api/screenshot', payLoad)
         // the Server Response
-        // response-
-        // data: {success: true, file: 'file url', name: 'name', fileName:'Github_01.01.2020'}
+        // data: {success: true/false, file: 'file url', siteName: 'github.com', fileName:'Github_01.01.2020'}
         .then((response) => {
-          console.log(response);
+          // success: true
+          // file: "./snapshots/Github_02.19.2020_20:52.png"
+          // siteName: "Github"
+          // fileName: "Github_02.19.2020_20:52.png"
           if (!response.data.success === true) {
             this.errorMsg = 'ScreenShot Error, please try again later';
           }
-
-          this.screenshot.status = response.data.success;
-          this.screenshot.file = response.data.file;
-          this.screenshot.name = response.data.fileName;
-          this.storeScreenShot(this.screenshot);
+          this.screenshot.success = response.data.success;
+          const siteURL = response.data.file.substr(1);
+          this.screenshot.fileURL = siteURL;
+          this.screenshot.siteName = response.data.siteName;
+          this.screenshot.fileName = response.data.fileName;
+          console.log('this,screenshot', this.screenshot);
+          // this.storeScreenShot(this.screenshot);
         })
         // catch that error
         .catch((error) => {
