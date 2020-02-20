@@ -1,8 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <nav class="bg-white px-8 pt-2 shadow-md">
+        <div class="-mb-px flex justify-center">
+          <p class="no-underline uppercase tracking-wide font-bold text-s py-3 mr-8">
+            <router-link class="no-underline" to="/">Home</router-link>
+          </p>
+          <p class="no-underline uppercase tracking-wide font-bold text-s py-3 mr-8">
+            <router-link class="no-underline" to="/about">About</router-link>
+          </p>
+        </div>
+      </nav>
     </div>
     <div class="main-container max-w-full">
       <router-view/>
@@ -20,13 +28,14 @@
 }
 
 #nav {
-  padding: 30px;
+  // padding: 30px;
   a {
-    font-weight: bold;
+    // font-weight: bold;
     color: #2d4d5c;
 
     &.router-link-exact-active {
-      color: #0069ff;
+      color: #3490dc;
+      border-bottom: #38a89d solid 2px;
     }
   }
 }
