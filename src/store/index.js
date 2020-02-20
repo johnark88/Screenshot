@@ -5,28 +5,22 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    screenshots: {
-      screenshotData: [{
-        name: '',
-        src: '',
-        status: '',
-      }],
-    },
+    screenshotData: [
+      { name: 'github_02_14_2020', src: 'github.com', success: 'true' },
+    ],
   },
   /* eslint-disable */
   getters: {
     successfulShot: (state) => {
       console.log(state, 'state');
-      console.log(state.screenshots.screenshotData.filter(shot => shot.status === true));
+      return state.screenshotData.filter(shot => shot.status === true);
     },
   },
   /* eslint-enable */
   mutations: {
     addImageData(state, payload) {
       console.log(payload, 'payload');
-      state.screenshots.status = payload.status;
-      state.screenshots.src = payload.file;
-      state.screenshots.name = payload.name;
+      state.screenshotData.push(payload);
     },
   },
   actions: {
